@@ -1,0 +1,31 @@
+#!/bin/sh
+
+# Use neovim for vim if present.
+[ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
+
+# Configuration files aliases.
+alias aliasrc="$EDITOR $HOME/.config/shell/aliasrc"
+alias zshrc="$EDITOR $HOME/.config/zsh/.zshrc"
+
+# Changing "ls" to "exa".
+alias ls="exa -alh --color=always --group-directories-first" # My preferred listing
+alias la="exa -a --color=always --group-directories-first" # All files and dirs
+alias lt="exa -aTF --color=always --group-directories-first" # Tree listing
+
+# Verbosity and settings that you pretty much just always are going to want.
+alias cp="cp -iv"
+alias mkdir="mkdir -pv"
+alias mv="mv -iv"
+alias rm="rm -v"
+
+# Colorize commands when possible.
+alias diff="diff --color=auto"
+alias grep="grep --color=auto"
+alias ip="ip -color=auto"
+
+# Yt-dlp.
+alias yt-mp4="yt-dlp --format 'bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]'"
+alias yt-mp3="yt-dlp --extract-audio --audio-format mp3 --audio-quality 0"
+
+# Other aliases.
+alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
