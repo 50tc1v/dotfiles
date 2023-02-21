@@ -7,25 +7,52 @@
 alias aliasrc="$EDITOR $HOME/.config/shell/aliasrc"
 alias zshrc="$EDITOR $HOME/.config/zsh/.zshrc"
 
+# Pacman and paru.
+alias pacsyu="sudo pacman -Syu"                 # Update only standard packages.
+alias parsua="paru -Sua"                        # Update only AUR packages.
+alias parsyu="paru -Syu"                        # Update standard and AUR packages.
+alias purge="sudo pacman -Rns $(pacman -Qtdq)"  # Remove orphaned packages.
+
+# Get fastest mirrors with "reflector".
+alias mirror="sudo reflector --verbose -f 30 -l 30 --number 10 --protocol https --save /etc/pacman.d/mirrorlist"
+
 # Changing "ls" to "exa".
-alias ls="exa -alh --color=always --group-directories-first" # My preferred listing
-alias la="exa -a --color=always --group-directories-first" # All files and dirs
-alias lt="exa -aTF --color=always --group-directories-first" # Tree listing
+alias la="exa -a --color=always --group-directories-first"      # All files and directories.
+alias ll="exa -l --color=always --group-directories-first"      # Long format.
+alias ls="exa -alh --color=always --group-directories-first"    # My preferred listing.
+alias lt="exa -aTF --color=always --group-directories-first"    # Tree listing.
 
 # Verbosity and settings that you pretty much just always are going to want.
 alias cp="cp -iv"
 alias mkdir="mkdir -pv"
 alias mv="mv -iv"
-alias rm="rm -v"
+alias rm="rm -Iv"
 
 # Colorize commands when possible.
 alias diff="diff --color=auto"
 alias grep="grep --color=auto"
 alias ip="ip -color=auto"
 
-# Yt-dlp.
+# Merge ~/.Xresources.
+alias merge="xrdb -merge ~/.Xresources"
+
+# git.
+alias addup="git add -u"
+alias branch="git branch"
+alias clone="git clone"
+alias checkout="git checkout"
+alias commit="git commit -m"
+alias fetch="git fetch"
+alias pull="git pull origin"
+alias push="git push origin"
+alias status="git status"
+alias tag="git tag"
+alias newtag="git tag -a"
+
+# yt-dlp.
 alias yt-mp4="yt-dlp --format 'bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]'"
-alias yt-mp3="yt-dlp --extract-audio --audio-format mp3 --audio-quality 0"
+alias yta-best="yt-dlp --extract-audio --audio-format best"
+alias ytv-best="yt-dlp -f bestvideo+bestaudio"
 
 # Other aliases.
 alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
