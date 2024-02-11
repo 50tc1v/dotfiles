@@ -1,0 +1,43 @@
+#!/bin/sh
+
+# Use neovim for of vim if present.
+[ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
+
+# Frequently editing dotfiles.
+alias zshrc="$EDITOR $ZDOTDIR/.zshrc"
+alias aliasrc="$EDITOR $ZDOTDIR/.zsh_aliasrc"
+
+# Pacman and paru.
+alias pacsyu="sudo pacman -Syu"                 # Update only standard packages.
+alias parsua="paru -Sua"                        # Update only AUR packages.
+alias parsyu="paru -Syu"                        # Update standard and AUR packages.
+alias purge="sudo pacman -Rnsc $(pacman -Qtdq)" # Remove orphaned packages.
+
+# Get fastest mirrors with "reflector".
+alias mirror="sudo reflector --verbose -f 30 -l 30 --number 10 --protocol https --save /etc/pacman.d/mirrorlist"
+
+# Changing "ls" to "exa".
+alias la="exa -a --color=always --group-directories-first"      # All files and directories.
+alias ll="exa -l --color=always --group-directories-first"      # Long format.
+alias ls="exa -alh --color=always --group-directories-first"    # My preferred listing.
+alias lt="exa -aTF --color=always --group-directories-first"    # Tree listing.
+
+# Verbosity and settings that you pretty much just always are going to want.
+alias cp="cp -iv"
+alias mkdir="mkdir -pv"
+alias mv="mv -iv"
+alias rm="rm -Iv"
+alias diff="diff --color=auto"
+alias grep="grep --color=auto"
+alias ip="ip -color=auto"
+alias yta-best="yt-dlp --extract-audio --audio-format best"
+alias ytv-best="yt-dlp -f bestvideo+bestaudio"
+
+# Some usefull git aliases.
+alias gs="git status"
+alias gc="git commit"
+alias gpsh="git push"
+alias gpll="git pull"
+
+# Other aliases.
+alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
