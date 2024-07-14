@@ -1,0 +1,9 @@
+[user]
+	email = 50tc1v@proton.me
+	name = Victor Miguel
+[core]
+	editor = nvim
+[push]
+	default = simple
+[diff]
+	tool = nvim -d
