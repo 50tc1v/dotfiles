@@ -1,0 +1,54 @@
+#!/bin/sh
+
+# Use neovim instead of vim if present.
+[ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
+
+# Frequently updated dotfiles.
+alias zshrc="$EDITOR $ZDOTDIR/.zshrc"
+alias aliases="$EDITOR $ZDOTDIR/.zsh_aliases"
+alias zshenv="$EDITOR $HOME/.zshenv"
+alias zprofile="$EDITOR $ZDOTDIR/.zprofile"
+
+# Pacman and Paru.
+alias pacsyu="sudo pacman -Syu"                  # Update only standard packages.
+alias parsua="paru -Sua"                         # Update only AUR packages.
+alias parsyu="paru -Syu"                         # Update standard and AUR packages.
+alias purge="sudo pacman -Rnsc $(pacman -Qtdq)"  # Remove orphaned packages.
+
+# Get fastest mirrors with "reflector".
+alias mirror="sudo reflector --verbose -f 30 -l 30 -c BR,US --number 10 --protocol https --save /etc/pacman.d/mirrorlist"
+
+# Change "ls" to "exa".
+alias la="exa -a --color=always --group-directories-first"    # All files and directories.
+alias ll="exa -l --color=always --group-directories-first"    # Long format.
+alias ls="exa -alh --color=always --group-directories-first"  # My preferred listing.
+alias lt="exa -aTF --color=always --group-directories-first"  # Tree listing.
+
+# Shell history.
+alias h="history -10"                     # List the last 10 history entries.
+alias hc="rm $XDG_DATA_HOME/zsh/history"  # Clear history.
+alias hg="history | grep"                 # Search for specific history entry
+
+# Verbosity and settings that you pretty much are going to always use.
+alias cp="cp -iv"
+alias mkdir="mkdir -pv"
+alias mv="mv -iv"
+alias rm="rm -Iv"
+alias diff="diff --color=auto"
+alias grep="grep --color=auto"
+alias ip="ip -color=auto"
+
+# Some usefull git aliases.
+alias gs="git status"
+alias gc="git commit"
+alias gpsh="git push"
+alias gpll="git pull"
+
+# yt-dlp.
+alias yta-best="yt-dlp --extract-audio --audio-format best"
+alias ytv-best="yt-dlp -f bestvideo+bestaudio"
+alias yt-mp4="yt-dlp --format 'bv*[ext=mp4]+ba/b[ext=mp4]'"
+alias yt-webm="yt-dlp --format 'bv*[ext=webm]+ba/b[ext=webm]'"
+
+# Other aliases.
+alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
